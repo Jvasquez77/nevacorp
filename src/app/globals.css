@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Compensa el header fijo al navegar con anclas (#portafolio, #inversionistas…) */
+  scroll-padding-top: 6rem;
+}
+
+body {
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+::selection {
+  background: rgb(212 175 55 / 0.35);
+  color: #fff;
+}
+
+@layer components {
+  /* Rejilla técnica de fondo, desvanecida en los bordes con una máscara radial */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 30%, transparent 100%);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(100deg, #f5e890 0%, #d4af37 45%, #b8860b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-silver {
+    background: linear-gradient(180deg, #ffffff 30%, rgb(255 255 255 / 0.55) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Tarjeta "glass" con borde degradado de 1px (máscara sobre un pseudo-elemento) */
+  .card-glass {
+    position: relative;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0.04), rgb(255 255 255 / 0.01));
+    backdrop-filter: blur(12px);
+  }
+
+  .card-glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(160deg, rgb(255 255 255 / 0.18), rgb(255 255 255 / 0.03) 40%, rgb(212 175 55 / 0.25));
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    transition: opacity 0.4s;
+  }
+
+  .hairline {
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.15), transparent);
+  }
+}
+
+/* Revelado al hacer scroll (ver components/ui/Reveal.tsx) */
+.reveal {
+  transition:
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal[data-state='hidden'] {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+/* Respeta la preferencia del usuario: desactiva animaciones decorativas si prefiere menos movimiento. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

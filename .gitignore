@@ -1,4 +1,15 @@
+# dependencias
 node_modules/
+
+# build de Next.js
 .next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# entorno local
+.env*.local
+
+# sistema / logs
 .DS_Store
 *.log
