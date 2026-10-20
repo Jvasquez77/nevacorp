@@ -49,7 +49,7 @@ export function Investors() {
               <Reveal
                 key={stat.label}
                 delay={index * 100}
-                className="card-glass flex flex-col-reverse justify-end gap-3 rounded-3xl p-5 sm:p-8"
+                className="card-glass flex flex-col-reverse justify-end gap-3 rounded-3xl p-5 first:col-span-2 sm:p-8"
               >
                 <dt className="text-sm leading-snug text-white/55">{stat.label}</dt>
                 <dd className="text-[2rem] font-semibold tracking-tightest text-gradient-gold sm:text-5xl">
