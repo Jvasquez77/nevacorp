@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { newsItems } from '@/content/site-content';
+import { latestNews } from '@/content/news';
 import { Container } from '@/components/ui/Container';
-import { ArrowRightIcon, ArrowUpRightIcon } from '@/components/ui/Icons';
+import { NewsCard } from '@/components/page/NewsCard';
+import { ArrowRightIcon } from '@/components/ui/Icons';
 import { Reveal } from '@/components/ui/Reveal';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 
@@ -21,25 +22,10 @@ export function News() {
         </Reveal>
 
         <ul className="mt-14 grid gap-5 md:grid-cols-3">
-          {newsItems.map((item, index) => (
-            <li key={item.title}>
+          {latestNews.map((article, index) => (
+            <li key={article.slug}>
               <Reveal delay={index * 100} className="h-full">
-                <Link
-                  href={item.href}
-                  className="card-glass group flex h-full flex-col rounded-3xl p-7 transition-transform duration-500 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neva-gold"
-                >
-                  <div className="flex items-center justify-between font-mono text-xs">
-                    <span className="rounded-full bg-neva-gold/10 px-2.5 py-1 uppercase tracking-wider text-neva-gold">{item.tag}</span>
-                    <time dateTime={item.dateISO} className="text-white/55">
-                      {item.date}
-                    </time>
-                  </div>
-                  <p className="mt-8 text-lg font-medium leading-snug text-white">{item.title}</p>
-                  <span className="mt-auto flex items-center gap-1.5 pt-8 text-sm text-white/55 transition-colors group-hover:text-neva-gold-light">
-                    Leer más
-                    <ArrowUpRightIcon className="h-3.5 w-3.5" />
-                  </span>
-                </Link>
+                <NewsCard article={article} />
               </Reveal>
             </li>
           ))}

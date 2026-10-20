@@ -102,7 +102,7 @@ export const newsItems: NewsItem[] = [
     date: '2 may. 2026',
     dateISO: '2026-05-02',
     tag: 'Verla · TreeNet',
-    title: 'Verla y TreeNet superan los 40.000 usuarios activos en Colombia',
+    title: 'Verla y TreeNet arrancan operaciones en Colombia',
     href: '/prensa/verla-treenet-40000-usuarios',
   },
   {

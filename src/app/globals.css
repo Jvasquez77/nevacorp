@@ -68,6 +68,29 @@ body {
     transition: opacity 0.4s;
   }
 
+  /* Texto largo (páginas legales y artículos de prensa) */
+  .prose-neva {
+    @apply text-[1.05rem] leading-relaxed text-white/70;
+  }
+  .prose-neva > * + * {
+    @apply mt-5;
+  }
+  .prose-neva h2 {
+    @apply mt-14 text-2xl font-semibold tracking-tight text-white;
+  }
+  .prose-neva h3 {
+    @apply mt-10 text-lg font-semibold text-white;
+  }
+  .prose-neva ul {
+    @apply list-disc space-y-2 pl-5 marker:text-neva-gold;
+  }
+  .prose-neva a {
+    @apply text-neva-gold-light underline decoration-neva-gold/40 underline-offset-4 hover:decoration-neva-gold;
+  }
+  .prose-neva strong {
+    @apply font-semibold text-white;
+  }
+
   .hairline {
     background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.15), transparent);
   }

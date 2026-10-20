@@ -53,7 +53,7 @@ export function Header() {
           </ul>
 
           <Link
-            href="#inversionistas"
+            href="/#inversionistas"
             className="hidden rounded-full border border-neva-gold/40 bg-neva-gold/10 px-4 py-2 text-sm font-medium text-neva-gold-light transition-colors hover:border-neva-gold hover:bg-neva-gold/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neva-gold md:inline-flex"
           >
             Invertir con Neva
@@ -82,7 +82,7 @@ export function Header() {
         {/* Panel móvil: montado condicionalmente para no exponer enlaces duplicados al foco/lectores de pantalla cuando está cerrado */}
         {isMenuOpen && (
           <ul id="menu-movil" className="flex flex-col gap-1 border-t border-white/10 p-3 md:hidden">
-            {[...navItems, { label: 'Invertir con Neva', href: '#inversionistas' }].map((item) => (
+            {[...navItems, { label: 'Invertir con Neva', href: '/#inversionistas' }].map((item) => (
               <li key={item.label}>
                 <Link
                   href={item.href}
